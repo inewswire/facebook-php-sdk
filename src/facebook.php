@@ -157,4 +157,12 @@ class Facebook extends BaseFacebook
     }
     return implode('_', $parts);
   }
+  
+  // $this->state should be cleared
+  // after the session is destroyed
+  // so that it can be used again
+  public function destroySession() {
+    parent::destroySession();
+    $this->state = null;
+  }
 }
